@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration & Exam</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="file"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="file"]:focus {
+            border-color: #4CAF50;
+            background-color: #fff;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .countdown {
+            font-size: 24px;
+            color: #ff6600;
+        }
+
+        .exam-section {
+            display: none;
+            padding-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .countdown-container {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff6600;
+        }
+
+        .result-message {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            input[type="submit"] {
+                font-size: 16px;
+                padding: 12px 28px;
+            }
+
+            .countdown {
+                font-size: 18px;
+            }
+
+            .countdown-container {
+                font-size: 20px;
+            }
+
+            .question p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 12px 24px;
+            }
+
+            .countdown {
+                font-size: 16px;
+            }
+
+            .countdown-container {
+                font-size: 18px;
+            }
+
+            .question p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Teacher Registration Form</h2>
+        <form id="teacherForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="universityCertificate">University Certificate</label>
+            <input type="file" id="universityCertificate" name="universityCertificate" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="phoneNumber">School Phone Number</label>y
+            <input type="number" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="myEmail">Your Email</label>
+            <input type="email" id="myEmail" name="myEmail" required>
+
+            <label for="schoolEmail">School Email</label>
+            <input type="email" id="schoolEmail" name="schoolEmail" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="thank-you-message" id="thankYouMessage" style="display: none;">
+            Thank you for choosing this institution. Your exam will start in <span id="countdownTimer">20</span> seconds.
+        </div>
+
+        <div class="exam-section" id="examSection">
+            <h2>Subject Exam</h2>
+            <div id="examQuestions"></div>
+            <button onclick="submitExam()">Submit Exam</button>
+        </div>
+
+        <div class="result-message" id="resultMessage" style="display: none;"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("teacherForm");
+        const thankYouMessage = document.getElementById("thankYouMessage");
+        const countdownTimer = document.getElementById("countdownTimer");
+        const examSection = document.getElementById("examSection");
+        const examQuestions = document.getElementById("examQuestions");
+        const resultMessage = document.getElementById("resultMessage");
+
+        const questions = {
+            Biology: [
+                { question: "What is the powerhouse of the cell?", options: ["A) Nucleus", "B) Mitochondria", "C) Ribosome", "D) Golgi Apparatus"], correct: "B" },
+                { question: "What process do plants use to make food?", options: ["A) Respiration", "B) Photosynthesis", "C) Digestion", "D) Fermentation"], correct: "B" },
+                { question: "What is the main organ of the circulatory system?", options: ["A) Heart", "B) Brain", "C) Kidney", "D) Lungs"], correct: "A" },
+                { question: "What type of cell division produces sex cells?", options: ["A) Mitosis", "B) Meiosis", "C) Binary fission", "D) Germination"], correct: "B" },
+                { question: "What is the name of the molecule that carries genetic information?", options: ["A) RNA", "B) DNA", "C) Protein", "D) Lipids"], correct: "B" },
+                { question: "Which of the following is responsible for carrying oxygen in the blood?", options: ["A) Red blood cells", "B) White blood cells", "C) Plasma", "D) Platelets"], correct: "A" },
+                { question: "What is the basic unit of life?", options: ["A) Atom", "B) Cell", "C) Organ", "D) Tissue"], correct: "B" },
+                { question: "Which part of the plant absorbs water and minerals?", options: ["A) Leaf", "B) Stem", "C) Root", "D) Flower"], correct: "C" },
+                { question: "What is the term for the genetic material found in the nucleus?", options: ["A) RNA", "B) Chromosome", "C) Mitochondria", "D) Ribosome"], correct: "B" },
+                { question: "Which organ is responsible for producing insulin?", options: ["A) Liver", "B) Kidney", "C) Pancreas", "D) Heart"], correct: "C" }
+            ],
+            English: [
+                { question: "Which of the following is a synonym of 'happy'?", options: ["A) Sad", "B) Joyful", "C) Angry", "D) Nervous"], correct: "B" },
+                { question: "Which is the correct sentence?", options: ["A) She go to the market.", "B) She goes to the market.", "C) She going to the market.", "D) She gone to the market."], correct: "B" },
+                { question: "What is the past tense of 'run'?", options: ["A) Ran", "B) Run", "C) Running", "D) Runs"], correct: "A" },
+                { question: "Which of the following is an example of a preposition?", options: ["A) Run", "B) Quickly", "C) Under", "D) Sad"], correct: "C" },
+                { question: "Which of the following is a conjunction?", options: ["A) But", "B) Happiness", "C) Slowly", "D) Quickly"], correct: "A" },
+                { question: "Which sentence is correct?", options: ["A) He have a car.", "B) He has a car.", "C) He haves a car.", "D) He is having a car."], correct: "B" },
+                { question: "Which is an example of a noun?", options: ["A) Run", "B) Happy", "C) Book", "D) Quickly"], correct: "C" },
+                { question: "Which is the correct plural of 'child'?", options: ["A) Childs", "B) Children", "C) Childes", "D) Childer"], correct: "B" },
+                { question: "Which of these is an adverb?", options: ["A) Slowly", "B) Jump", "C) Book", "D) Red"], correct: "A" },
+                { question: "What does the word 'benevolent' mean?", options: ["A) Evil", "B) Generous", "C) Selfish", "D) Happy"], correct: "B" }
+            ],
+            Chemistry: [
+                { question: "What is the atomic number of Carbon?", options: ["A) 6", "B) 12", "C) 8", "D) 14"], correct: "A" },
+                { question: "Which of the following is a noble gas?", options: ["A) Oxygen", "B) Nitrogen", "C) Helium", "D) Hydrogen"], correct: "C" },
+                { question: "What is the molar mass of NaCl (Sodium Chloride)?", options: ["A) 58.44 g/mol", "B) 32.00 g/mol", "C) 40.00 g/mol", "D) 22.99 g/mol"], correct: "A" },
+                { question: "What type of bond involves the sharing of electrons between two atoms?", options: ["A) Ionic bond", "B) Covalent bond", "C) Hydrogen bond", "D) Van der Waals forces"], correct: "B" },
+                { question: "What is the pH value of pure water?", options: ["A) 1", "B) 5", "C) 7", "D) 10"], correct: "C" },
+                { question: "Which element has the chemical symbol 'Na'?", options: ["A) Sodium", "B) Nitrogen", "C) Neon", "D) Nickel"], correct: "A" },
+                { question: "What is the chemical formula for water?", options: ["A) CO2", "B) O2", "C) H2O", "D) H2O2"], correct: "C" },
+                { question: "What is the chemical symbol for gold?", options: ["A) Au", "B) Ag", "C) Pb", "D) Fe"], correct: "A" },
+                { question: "Which of the following is an example of an exothermic reaction?", options: ["A) Boiling water", "B) Freezing water", "C) Combustion", "D) Dissolving sugar in water"], correct: "C" },
+                { question: "Which of the following is a chemical property?", options: ["A) Color", "B) Density", "C) Reactivity with acid", "D) Melting point"], correct: "C" }
+            ]
+        };
+
+        let countdownValue = 20;
+        const countdownInterval = setInterval(function() {
+            countdownTimer.textContent = countdownValue;
+            if (countdownValue === 0) {
+                clearInterval(countdownInterval);
+                thankYouMessage.style.display = "none";
+                startExam();
+            }
+            countdownValue--;
+        }, 1000);
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const subject = document.getElementById("subject").value.trim().toLowerCase();
+            const subjectQuestions = questions[subject.charAt(0).toUpperCase() + subject.slice(1)];
+            let questionHTML = '';
+            subjectQuestions.forEach((q, index) => {
+                questionHTML += `
+                    <div class="question">
+                        <p>${index + 1}. ${q.question}</p>
+                        ${q.options.map((option, i) => 
+                            `<label>
+                                <input type="radio" name="q${index}" value="${option.charAt(0)}"> ${option}
+                            </label><br>`
+                        ).join('')}
+                    </div>
+                `;
+            });
+            examQuestions.innerHTML = questionHTML;
+            thankYouMessage.style.display = "block";
+        });
+
+        function startExam() {
+            examSection.style.display = "block";
+        }
+
+        function submitExam() {
+            const subject = document.getElementById("subject").value.trim().toLowerCase();
+            const subjectQuestions = questions[subject.charAt(0).toUpperCase() + subject.slice(1)];
+            let score = 0;
+
+            subjectQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && selectedOption.value === q.correct) {
+                    score += 2;
+                }
+            });
+
+            const totalScore = score;
+            const cutoffMark = 70;
+
+            if (totalScore >= cutoffMark) {
+                resultMessage.textContent = `Congratulations! You passed with ${totalScore} marks.`;
+                resultMessage.style.color = 'green';
+            } else {
+                resultMessage.textContent = `Sorry, you did not pass. You scored ${totalScore} marks.`;
+                resultMessage.style.color = 'red';
+            }
+            resultMessage.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

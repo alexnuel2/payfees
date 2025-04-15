@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Fees Dashboard</title>
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2><span>Menu</span></h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Transaction History</a></li>
+                    <li><a href="#">Report Problem</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h1>Pay School Fees</h1>
+            <div class="payment-form">
+                <form id="payment-form">
+                    <div class="input-field">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" placeholder="Enter student name" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="institution-name">Institution Name</label>
+                        <input type="text" id="institution-name" placeholder="Institution Name" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="student-id">Student ID</label>
+                        <input type="text" id="student-id" placeholder="Enter student ID" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="currency">Currency:</label>
+                        <input type="text" id="currency-search" placeholder="Search for currency...">
+                        <ul id="currency-list" class="currency-dropdown">
+                        </ul>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="term">Select Term/Semester</label>
+                        <select id="term" required>
+                            <option value="first-term">First Term (Secondary School)</option>
+                            <option value="second-term">Second Term (Secondary School)</option>
+                            <option value="third-term">Third Term (Secondary School)</option>
+                            <option value="first-semester">First Semester (University)</option>
+                            <option value="second-semester">Second Semester (University)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="payment-method">Payment Method</label>
+                        <select id="payment-method" required>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="pos-transfer">POS Transfer</option>
+                            <option value="mobile-transfer">Mobile Transfer</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Pay Now</button>
+                </form>
+            </div>
+
+            <!-- Receipt -->
+            <div id="receipt" class="receipt hidden">
+                <h2>Receipt</h2>
+                <p><strong>Student Name:</strong> <span id="receipt-name"></span></p>
+                <p><strong>Student ID:</strong> <span id="receipt-id"></span></p>
+                <p><strong>Amount Paid:</strong> <span id="receipt-amount"></span></p>
+                <p><strong>Currency:</strong> <span id="receipt-currency"></span></p>
+                <p><strong>Payment Method:</strong> <span id="receipt-method"></span></p>
+                <p><strong>Date:</strong> <span id="receipt-date"></span></p>
+                <button onclick="window.print()" class="print-btn">Print Receipt</button>
+            </div>
+        </main>
+        <script src="script1.js"></script>
+    </div>
+</body>
+</html>

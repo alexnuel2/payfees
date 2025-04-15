@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Pay Fees</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="main">
+       <div class="navbar">
+           <div class="icon">
+               <h2 class="logo">Pay Fees</h2>
+           </div> 
+
+           <div class="menu">
+               <ul>
+                   <li><a href="index.html">HOME</a></li>
+                   <li><a href="About.html">ABOUT</a></li>
+                   <li><a href="service.HTML">SERVICE</a></li>
+                   <li><a href="Team.html">TEAM</a></li> 
+                   <li><a href="contact.html">CONTACT</a></li>
+               </ul>
+           </div>
+
+           <div class="search">
+               <input class="srch" type="search" name="Organization" placeholder="Input Organization">
+               <button class="btn">Search</button>
+           </div>
+       </div>
+
+       <div class="content">
+           <h1>Stress Free,<br>Fast&<br>Reliable<br>PaymentMethod</h1>
+           <p class="par">
+               <h2>Enjoy a hassle-free payment experience<br>with everything you need to have a seamless transaction.<br> Making payments is as simple as A-B-C!</h2>
+           </p>
+
+           <button class="cn"><a href="Apply as an institute.html">As an Institution</a></button> 
+            <button class="cn"><a href="teacher.html">As a Teacher/Staff </a></button>
+
+           <div class="form">
+            <div class="input-container focus">
+               <h2>Make payment</h2>
+               <div spellcheck="true">
+               <div class="input-container focus">
+                <input type="text" name="name" class="input" id="student name" required>
+                <label for="username">Name</label>
+        </div> 
+               
+                      <div class="input-container focus">
+
+                <input type="text" name="class" class="input" id="class" required>
+                <label for="username">class</label>
+            </div>
+            <div class="input-container focus">
+                <input type="text" name="registration number" class="input" id="registration number" required>
+                <label for="username">Reg number</label>
+            </div>
+        </div>
+            <button class="btn"><a href="dashoard.html">Enter</a></button>
+               <p class="link">Don't know how to use it<br>
+               <a href="turtorial.html">!! Click here for tutorial !!</a></p>
+
+               <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <script>
+    document.querySelector(".btn").addEventListener("click", function() {
+        var searchTerm = document.querySelector(".srch").value; // Get the search input value
+        if (searchTerm) {
+            alert("Searching for: " + searchTerm); // Display the search term in an alert for now
+            // Here you can also redirect or process the search result:
+            // window.location.href = "search_results.html?query=" + searchTerm;
+        } else {
+            alert("Please enter a search term!");
+        }
+    });
+</script>
+
+</body>
+</html>

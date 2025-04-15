@@ -1,0 +1,216 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title h1 {
+    font-size: 40px; 
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold; 
+    color: #333;
+    text-align: center;  
+    letter-spacing: 2px;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4f4f4; 
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards; 
+}
+
+
+.container {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 60px 0;
+}
+
+
+.container-section {
+    width: 55%;
+    padding-right: 40px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards; /* Fade-in and slide-up effect */
+}
+
+
+.image-section {
+    width: 40%;
+    padding-left: 40px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* Fade-in and slide-up effect for image */
+}
+
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Soft border for image */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+
+.image-section img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.content-section .title {
+    text-transform: uppercase;
+    font-size: 34px;
+    font-weight: 700;
+    color: #222; /* Darker tone for a mature feel */
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid #a52a2a; /* A subtle underline to make the title stand out */
+    padding-bottom: 10px;
+}
+
+.content-section .content h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-section .content p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    letter-spacing: 0.5px;
+}
+
+.content-section .content .button {
+    text-align: center;
+}
+
+.content-section .content .button a {
+    background-color: #3d3d3d;
+    padding: 14px 50px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.content-section .content .button a:hover {
+    background-color: #a52a2a;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
+
+}
+
+.content-section .social {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.content-section .social i {
+    color: #a52a2a;
+    font-size: 32px;
+    margin: 0 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    animation: bounce 1s ease infinite;
+}
+
+.content-section .social i:hover {
+    color: #333;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .container-section {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .image-section {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .content-section .title {
+        font-size: 28px;
+    }
+
+    .content-section .content h3 {
+        font-size: 20px;
+    }
+
+    .content-section .content p {
+        font-size: 16px;
+    }
+
+    .content-section .content .button a {
+        padding: 12px 40px;
+        font-size: 16px;
+    }
+
+    .content-section .social {
+        margin-top: 20px;
+    }
+
+    .content-section .social i {
+        font-size: 28px;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}

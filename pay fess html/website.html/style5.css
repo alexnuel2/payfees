@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 10px;
+    background: linear-gradient(135deg, #000000 0%, #080808 100%);
+}
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(tree.jpg), #000;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+.wrapper {
+    width: 400px;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    background: rgba(5, 5, 5, 0.1);
+    border: 1px solid rgba(2, 2, 2, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    transition: all 0.3s ease;
+}
+.wrapper:hover {
+    box-shadow: 0 12px 48px rgba(2, 61, 255, 0.5);
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #000000;
+    letter-spacing: 1px;
+}
+.intro-text {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+.input-field label i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+.input-field label i.bx-image {
+    font-size: 20px;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+button {
+    background-color: #111111;
+    color: #fffdfd;
+    font-weight: 650;
+    border: none;
+    padding: 14px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+button:hover {
+    color: #ff5304;
+    background: rgba(252, 248, 248, 0.2);
+    border-color: #050505;
+    animation: buttonHover 0.3s ease;
+}
+@keyframes buttonHover {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+.signup {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffecec;
+}
+.input-field {
+    position: relative; 
+    border-bottom: 2px solid rgba(17, 15, 15, 0.3);
+    margin: 20px 0;
+}
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-20%);
+    color: #d6d6d6;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+.input-field input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #030303;
+    padding: 0 10px;
+}
+.input-field input[type="file"] {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    padding-left: 10px;
+    padding-top: 12px;
+    cursor: pointer;
+    opacity: 0;
+}
+.input-field input[type="file"]:focus {
+    outline: none;
+}
+.input-field label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.input-field input[type="file"] + label::before {
+    content: "Choose File...";
+    background-color: #111111;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.input-field input[type="file"]:hover + label::before {
+    background-color: rgb(27, 12, 13);
+}
+.input-field input:focus~label,
+.input-field input:valid~label {
+    font-size: 0.9rem;
+    top: 10px;
+    transform: translateY(-150%);
+    color: #000000;
+}
+.wrapper a {
+    color: #fdf1f1; 
+    text-decoration: none;
+}
+
+/* Fix for select element and label collision */
+.input-field label {
+    margin-bottom: 10px; /* Added margin to give space between the label and input */
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    width: 100%;
+    height: 40px;
+    padding-left: 40px; /* Space for the icon */
+    padding-right: 10px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid rgba(17, 15, 15, 0.3);
+    color: #d6d6d6;
+    font-size: 16px;
+    outline: none;
+    margin-top: 10px; /* Added margin-top to avoid collision with the label */
+}
+
+/* Icon for select dropdown */
+.custom-select::before {
+    content: "\f2c6"; /* FontAwesome icon for dropdown arrow */
+    font-family: "Boxicons";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #d6d6d6;
+}

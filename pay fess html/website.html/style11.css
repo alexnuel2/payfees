@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title h1 {
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #333;
+    text-align: center;
+    border-bottom: orangered;  
+    letter-spacing: 2px;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4f4f4; 
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+     animation: fadeIn 1s ease-out forwards; 
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+    transition: transform 0.3s ease-in-out;
+}
+
+.section:hover {
+    transform: scale(1.05);
+}
+.container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 60px 0;
+}
+
+
+.container-section {
+    opacity: 1;
+    animation: fadeInUp 1s ease-out 0.3s forwards; 
+}
+
+.content-section .title {
+    text-transform: uppercase;
+    font-size: 34px;
+    font-weight: 700;
+    color: #222; 
+    text-align: center;
+      border-bottom: orangered;  
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+}
+
+.content-section .content h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-section .content {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .container-section {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .content-section .title {
+        font-size: 28px;
+    }
+
+    .content-section .content h3 {
+        font-size: 20px;
+    }
+
+    .content-section .content  {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #555;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0 20px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
